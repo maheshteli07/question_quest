@@ -28,6 +28,22 @@ button { background: var(--accent); border: 0; border-radius: 8px; color: white;
 .question-card p { line-height: 1.6; }
 .question-card a { color: var(--accent); flex: 0 0 auto; font-weight: 700; text-decoration: none; }
 .empty-state { padding: 40px 0; }
+.file-upload { margin: 32px 0; }
+.file-upload > label { display: block; font-weight: 700; margin-bottom: 8px; }
+.file-upload input[type="file"] { flex: 1; min-width: 0; }
+.file-upload button:disabled { cursor: wait; opacity: .7; }
+.upload-error { color: #b42318; }
+.upload-result { margin-top: 40px; }
+.upload-result h2 { color: var(--text-h); }
+.upload-result pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; max-height: 480px; overflow: auto; padding: 16px; white-space: pre-wrap; }
+.prediction-form { display: grid; gap: 12px; margin: 32px 0; }
+.prediction-form label { color: var(--text-h); font-weight: 700; }
+.prediction-form textarea { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-h); font: inherit; line-height: 1.5; padding: 14px; resize: vertical; }
+.prediction-form button { justify-self: start; min-height: 46px; }
+.prediction-form button:disabled { cursor: wait; opacity: .7; }
+.prediction-results { margin-top: 40px; }
+.prediction-results h2 { color: var(--text-h); }
+.prediction-score { font-size: .9rem; font-weight: 700; }
 @media (max-width: 700px) {
   .navbar, .page { padding-left: 20px; padding-right: 20px; }
   .search-layout { grid-template-columns: 1fr; }

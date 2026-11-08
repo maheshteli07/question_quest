@@ -30,3 +30,41 @@ export async function searchQuestions(query, model = 'hybrid') {
     terms.some((term) => `${question.title} ${question.body}`.toLowerCase().includes(term)),
   )
 }
+
+export async function uploadDocument(file) {
+  const apiUrl = import.meta.env.VITE_API_URL
+  if (!apiUrl) {
+    throw new Error('Set VITE_API_URL to the backend API URL before uploading PDFs.')
+  }
+
+  const formData = new FormData()
+  formData.append('file', file)
+
+  const response = await fetch(`${apiUrl}/upload`, {
+    method: 'POST',
+    body: formData,
+  })
+  const result = await response.json()
+  if (!response.ok) {
+    throw new Error(result.error || 'Unable to upload PDF')
+  }
+  return result
+}
+
+export async function predictQuestions(text) {
+  const apiUrl = import.meta.env.VITE_API_URL
+  if (!apiUrl) {
+    throw new Error('Set VITE_API_URL to the backend API URL to generate predictions.')
+  }
+
+  const response = await fetch(`${apiUrl}/predictions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text }),
+  })
+  const result = await response.json()
+  if (!response.ok) {
+    throw new Error(result.error || 'Unable to generate predictions')
+  }
+  return result
+}

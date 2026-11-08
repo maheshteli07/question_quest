@@ -12,8 +12,13 @@ npm install
 npm run dev
 ```
 
-Set `VITE_API_URL` to the backend URL when connecting the frontend to Flask.
-Without it, the frontend uses its built-in sample results.
+Set `VITE_API_URL` to `http://localhost:5000/api` when connecting the frontend
+to Flask. Without it, search uses built-in sample results and PDF upload is
+disabled.
+Open `/upload` to upload a PDF and preview its extracted text. The backend
+accepts PDF files up to 10 MB.
+Use `/predictions` to find related questions from pasted text or an uploaded
+PDF. Predictions are ranked against the questions in `backend/data/questions.csv`.
 
 ## Run the backend
 
@@ -25,3 +30,6 @@ python main.py
 
 The search endpoint is available at
 `http://localhost:5000/api/search?q=python&model=hybrid`.
+PDF uploads are handled at `http://localhost:5000/api/upload`.
+Question predictions are available at `http://localhost:5000/api/predictions`
+using a JSON request body such as `{"text":"How do I read a CSV file in Python?"}`.

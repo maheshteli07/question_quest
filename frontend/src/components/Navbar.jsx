@@ -7,7 +7,8 @@ function Navbar() {
       <nav aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="/search">Search</a>
-        <a href="/about">About</a>
+        <a href="/upload">Upload</a>
+        <a href="/predictions">Predictions</a>
       </nav>
     </header>
   )

@@ -1,6 +1,8 @@
-from .tfidf_search import search as tfidf_search
+from .embedding_service import rank_by_similarity
 
 
 def search(questions: list[dict], query: str, limit: int = 20) -> list[dict]:
-    """Use lexical results as a deterministic fallback without an embedding model."""
-    return tfidf_search(questions, query, limit)
+    return [
+        {key: value for key, value in question.items() if key != "similarity"}
+        for question in rank_by_similarity(query, questions, limit)
+    ]
